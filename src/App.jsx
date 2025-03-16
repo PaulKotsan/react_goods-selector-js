@@ -43,25 +43,19 @@ export const App = () => {
               key={good}
               data-cy="Good"
               className={
-                selectedGood.includes(good)
-                  ? 'has-background-success-light'
-                  : ''
+                selectedGood === good ? 'has-background-success-light' : ''
               }
             >
               <td>
                 <button
-                  data-cy={
-                    selectedGood.includes(good) ? 'RemoveButton' : 'AddButton'
-                  }
+                  data-cy={selectedGood === good ? 'RemoveButton' : 'AddButton'}
                   type="button"
-                  className="button is-info"
+                  className={`button ${selectedGood === good ? 'is-info' : 'is-danger'}`}
                   onClick={() => {
-                    // I've no idea why this is an issue, but yea.
-                    // eslint-disable-next-line no-unused-expressions
-                    selectedGood ? setSelectedGood('') : setSelectedGood(good);
+                    setSelectedGood(selectedGood === good ? '' : good);
                   }}
                 >
-                  {selectedGood.includes(good) ? '-' : '+'}
+                  {selectedGood === good ? '-' : '+'}
                 </button>
               </td>
 
