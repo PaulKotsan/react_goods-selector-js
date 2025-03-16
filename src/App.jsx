@@ -20,7 +20,7 @@ export const App = () => {
 
   return (
     <main className="section container">
-      {selectedGood.length === 0 ? (
+      {selectedGood === '' ? (
         <h1 className="title is-flex is-align-items-center">
           No goods selected
         </h1>
@@ -28,7 +28,7 @@ export const App = () => {
         <h1 className="title is-flex is-align-items-center">
           {selectedGood} is selected
           <button
-            data-cy="ClearButton"
+            data-cy={selectedGood !== '' && 'ClearButton'}
             type="button"
             className="delete ml-3"
             onClick={() => setSelectedGood('')}
@@ -50,7 +50,7 @@ export const App = () => {
                 <button
                   data-cy={selectedGood === good ? 'RemoveButton' : 'AddButton'}
                   type="button"
-                  className={`button ${selectedGood === good ? 'is-info' : 'is-danger'}`}
+                  className={`button ${selectedGood === good && 'is-info'}`}
                   onClick={() => {
                     setSelectedGood(selectedGood === good ? '' : good);
                   }}
